@@ -3,22 +3,22 @@ import 'dart:math';
 
 class PublicacionWidget extends StatefulWidget {
   String nombre, fecha;
+
   PublicacionWidget({this.nombre,this.fecha});
-  
+
   @override
-  _PublicacionWidgetState createState() => _PublicacionWidgetState(nombre:this.nombre,fecha:this.fecha);
+  _PublicacionWidgetState createState() => _PublicacionWidgetState(this.nombre,this.fecha);
 }
 
 class _PublicacionWidgetState extends State<PublicacionWidget> {
-  String nombre, fecha;
   int contador = 0;
-
-  _PublicacionWidgetState({this.nombre,this.fecha});
- 
+  String nombre, fecha;
+  IconData favorito = Icons.favorite_border;
+  _PublicacionWidgetState(this.nombre, this.fecha);
 
   @override
   Widget build(BuildContext context) {
-    int numero = Random().nextInt(50);
+    final int numero = Random().nextInt(50);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
        child: Column(
@@ -34,7 +34,7 @@ class _PublicacionWidgetState extends State<PublicacionWidget> {
                      textAlign: TextAlign.start,
                     ),
                    Text(
-                     "${this.fecha}",
+                     "${this.widget.fecha}",
                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
                      textAlign: TextAlign.left
                     )
@@ -52,7 +52,7 @@ class _PublicacionWidgetState extends State<PublicacionWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Icon(Icons.favorite_border,color: Colors.green,size: 50,),
+              IconButton(icon: Icon(favorito,color: Colors.green,), onPressed: darLike),
               Text(
                 "$contador",
                 style: TextStyle(fontSize: 25),
@@ -62,6 +62,23 @@ class _PublicacionWidgetState extends State<PublicacionWidget> {
          ],
        ),
     );
+  }
+
+  void darLike()
+  {
+    if(contador==0)
+    {
+      contador++;
+      favorito = Icons.favorite;
+    }
+    else if(contador > 0)
+    {
+      contador--;
+      favorito = Icons.favorite_border;
+    }
+
+    setState(() {});
+
   }
 
   Widget crearImagen()

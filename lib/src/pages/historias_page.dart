@@ -32,10 +32,10 @@ class _HistoriasPageState extends State<HistoriasPage> {
   {
     return Column(
       children: <Widget>[
-        PublicacionWidget(
-          nombre: "Mario Alberto C",
-          fecha: "13/Octubre/2020",
-        )
+        PublicacionWidget(nombre: "Mario Alberto Cornelio",fecha: "13/Octubre/2020"),
+        PublicacionWidget(nombre: "Teresita de Jesus Izquierdo",fecha: "10/Octubre/2020"),
+        PublicacionWidget(nombre: "Gustavo Ramon de la Cruz",fecha: "15/Octubre/2020"),
+        PublicacionWidget(nombre: "Jair Eduardo Lopez.",fecha: "15/Octubre/2020")
       ],
     );
   }
